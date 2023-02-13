@@ -1,0 +1,49 @@
+{% extends 'users/base.html' %}{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'users/css/form.css' %}" type="text/css" />
+<section class="contact-section">
+  <div class="contact-wrapper">
+    <form onsubmit="sendEmail();reset();return false;" method="POST">
+      <!-- used to prevent malicious attacks-->
+      {% csrf_token %}
+      <span class="form-title">Get in touch</span>
+      <div class="input-wrapper">
+        <label for="name">fullname</label>
+        <input type="text" id="name" />
+      </div>
+      <div class="input-wrapper">
+        <label for="email">email</label>
+        <input type="email" id="email" />
+      </div>
+      <div class="input-wrapper">
+        <label for="phone">phone number</label>
+        <input type="text" id="phone" />
+      </div>
+      <div class="input-wrapper">
+        <label for="textarea">message</label>
+        <textarea
+          name="textarea"
+          id="textarea"
+          name="textarea"
+          cols="30"
+          rows="5"
+        ></textarea>
+      </div>
+      <input type="submit" class="submit-btn" />
+    </form>
+  </div>
+  <div class="description">
+    <h2>Contact Information</h2>
+    <span
+      >We would love to hear from you. Our team is going to respond within
+      30minutes.</span
+    >
+    <p>phone number: <span>+98 1234567890</span></p>
+    <p>email address: <span>interneteng@gmail.com</span></p>
+    <p>address: <span>Khorasan-Razavi, Mashhad, adib blvd</span></p>
+    <p>whatsapp: <span>+98 9012345678</span></p>
+    <p>telegram: <span>@interneteng</span></p>
+    <p>instagram: <span>@interneteng2</span></p>
+  </div>
+</section>
+
+{% endblock content %}

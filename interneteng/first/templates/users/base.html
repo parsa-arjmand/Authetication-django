@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--load static files like css,images,...-->
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internet Eng project</title>
+    <!--links CSS-->
+    <link rel="stylesheet" href="{% static 'users/css/main.css' %}" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <span id="logo">Parsa's Project</span>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'contact' %}">Contact us</a></li>
+          <li><a href="{% url 'profile' %}">Profile</a></li>
+        </ul>
+      </nav>
+      <div class="login-wrapper">
+        {% if user.is_authenticated %}
+        <span class="my-user"
+          >Hi there! <span class="mb-user">{{user.username}}</span></span
+        >
+        <a href="{% url 'logout' %}" class="register-cta">Logout</a>
+
+        {% else %}
+        <a href="{% url 'login' %}" class="login-cta">Login</a>
+        <a href="{% url 'register' %}" class="register-cta">Register</a>
+        {% endif %}
+      </div>
+    </header>
+    <div>
+      {% if messages %} {% for message in messages %}
+      <div class="alert">{{message}}</div>
+      {% endfor %} {% endif %} {% block content %} {% endblock content %}
+    </div>
+    <script>
+      const alert = document.querySelector(".alert");
+      setTimeout(() => {
+        alert.style.display = "none";
+      }, 4000);
+    </script>
+  </body>
+</html>

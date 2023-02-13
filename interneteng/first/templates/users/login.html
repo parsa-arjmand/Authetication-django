@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'users/css/form.css' %}" type="text/css" />
+<div class="container">
+  <form action="" method="POST">
+    <!-- used to prevent malicious attacks-->
+    {% csrf_token %}
+    <span class="form-title">Sign-in Now</span>
+    <div class="input-wrapper">{{form.username.label}} {{form.username}}</div>
+    <div class="input-wrapper">{{form.password.label}} {{form.password}}</div>
+    <input type="submit" class="submit-btn" />
+    <span class="reg-redirect"
+      >dont have an account?
+      <a href="{% url 'register' %}" class="my-link">sign-up</a></span
+    >
+  </form>
+</div>
+{% endblock content %}

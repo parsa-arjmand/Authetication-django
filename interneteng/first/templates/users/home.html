@@ -1,0 +1,68 @@
+{% extends 'users/base.html' %} {% block content %}
+
+<section class="main-container">
+  <div class="content">
+    {% if user.is_authenticated %}
+    <div style="display: flex; gap: 0.5rem">
+      <h1 style="color: var(--main)">Welcome Back!</h1>
+      <h2 class="user-home">{{user.username}}</h2>
+    </div>
+    <span>{{user.email}}</span>
+    <p>
+      {{user.username}} was born in San Francisco to a Syrian father and German-American
+      mother. He was adopted shortly after his birth. He attended Reed College in 1972
+      before withdrawing that same year. In 1974, he traveled through India seeking
+      enlightenment before later studying Zen Buddhism. He and Wozniak co-founded Apple in
+      1976 to sell Wozniak's Apple I personal computer.
+    </p>
+    {% else %}
+    <div class="img-wrapper">
+      <img
+        style="width: 100%; height: 100%"
+        src="../../static/users/images/data-not-found-1965034-1662569.png"
+        alt="no data"
+      />
+    </div>
+    <div class="home-link">
+      to see your information
+      <a href="{% url 'login' %}" class="register-cta"> Login</a>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="slider-wrapper">
+    <button class="slide-arrow" id="slide-arrow-prev">&#8249;</button>
+
+    <button class="slide-arrow" id="slide-arrow-next">&#8250;</button>
+
+    <ul class="slides-container" id="slides-container">
+      <li class="slide">
+        <img class="my-img" src="../../static/users/images/08.-Violet-Blue.jpg" alt="" />
+      </li>
+      <li class="slide">
+        <img class="my-img" src="../../static/users/images/mesh-183.png" alt="" />
+      </li>
+      <li class="slide">
+        <img class="my-img" src="../../static/users/images/38.-Sky-Blue_1.jpg" alt="" />
+      </li>
+      <li class="slide">
+        <img class="my-img" src="../../static/users/images/31.-Portage.jpg" alt="" />
+      </li>
+    </ul>
+  </div>
+</section>
+<script>
+  const slidesContainer = document.getElementById("slides-container");
+  const slide = document.querySelector(".slide");
+  const prevButton = document.getElementById("slide-arrow-prev");
+  const nextButton = document.getElementById("slide-arrow-next");
+  nextButton.addEventListener("click", () => {
+    const slideWidth = slide.clientWidth;
+    slidesContainer.scrollLeft += slideWidth;
+  });
+  prevButton.addEventListener("click", () => {
+    const slideWidth = slide.clientWidth;
+    slidesContainer.scrollLeft -= slideWidth;
+  });
+</script>
+{% endblock content %}

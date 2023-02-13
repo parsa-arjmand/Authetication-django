@@ -1,0 +1,7 @@
+{% extends 'users/base.html' %}{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'users/css/main.css' %}" type="text/css" />
+<div style="background-color: rgb(255, 225, 225); padding: 8px">
+  You have been logged-out
+</div>
+<span><a href="{% url 'login' %}" class="my-link">login again</a></span>
+{% endblock content %}

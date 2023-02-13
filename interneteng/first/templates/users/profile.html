@@ -1,0 +1,16 @@
+<!-- do it for the homepage -->
+
+{% extends 'users/base.html' %}{% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'users/css/main.css' %}" type="text/css" />
+<div class="container profile">
+  <div class="profile-section">
+    <h2 class="profile-title">Profile</h2>
+    {% if user.is_authenticated %}
+    <span>Username: {{user.username}}</span>
+    <span>Email: {{user.email}}</span>
+    {% else %}
+    <span>please sign-in to see the information</span>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
